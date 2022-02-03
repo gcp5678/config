@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # 字体颜色配置
 Green="\033[32m"
 Red="\033[31m"
