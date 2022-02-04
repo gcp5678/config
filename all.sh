@@ -26,7 +26,7 @@ function install_oci() {
 }
 
 function oci_config() {
-  cd /root && mkdir .oci && chmod 700 .oci && cd .oci && wget -O config https://raw.githubusercontent.com/voyku/config/main/config
+  cd /root && mkdir .oci && chmod 700 .oci && cd .oci && wget -O config https://raw.githubusercontent.com/voyku/config/main/config && chmod 600 config
   config="/root/.oci/config"
   read -rp "请输入你的秘钥地址(例如/root/.oci/key.pem):" keya
   mv ${keya} /root/.oci/
