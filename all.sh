@@ -84,8 +84,7 @@ menu() {
   echo -e "${Green}0.${Font}  安装python"
   echo -e "${Green}1.${Font}  安装oci"
   echo -e "${Green}2.${Font}  oci配置文件设置"
-  echo -e "${Green}3.${Font}  宝塔安装"
-  echo -e "${Green}4.${Font}  开机脚本"
+  echo -e "${Green}3.${Font}  开机脚本"
   read -rp "请输入数字：" menu_num
   case $menu_num in
   0)
@@ -98,9 +97,6 @@ menu() {
   oci_config
   ;;
   3)
-  install_baota
-  ;;
-  4)
   open_instance
   ;;
   esac
