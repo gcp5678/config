@@ -441,10 +441,10 @@ menu() {
   read -rp "请输入数字：" menu_num
   case $menu_num in
   0)
-  install
+  install_oci
   ;;
   1)
-  install_oci
+  install
   ;;
   esac
 }
