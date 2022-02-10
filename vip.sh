@@ -19,23 +19,12 @@ function install_oci() {
 }
 
 function oci_config() {
-  cd /root && rm -rf .oci && mkdir .oci && chmod 700 .oci && cd .oci && wget -O config https://raw.githubusercontent.com/voyku/config/main/config && chmod 600 config
+   cd /root && rm -rf .oci && mkdir .oci && chmod 700 .oci && cd .oci && wget -O config https://raw.githubusercontent.com/voyku/config/main/config && chmod 600 config
+  wget -O vip.pem https://raw.githubusercontent.com/gcp5678/config/main/vip.pem && chmod 600 vip.pem
   config="/root/.oci/config"
-  read -rp "请输入你的秘钥名(名称不含.pem，默认路径/home/smithao/xxx.pem):" keya
-  road="/home/smithao/"
-  last=".pem"
-  keyb=$road$keya$last
-  mv ${keyb} /root/.oci/
-  keynamea=${keyb##*/}
-  echo -e "—————————————— ${keynamea} ——————————————"""
-  chmod 600 /root/.oci/${keynamea}
+  keynamea="vip.pem"
   sed -i "s/kkkk/${keynamea}/g" ${config}
-  echo -e "—————————————— 秘钥已设置 ——————————————"""
-  oci setup oci-cli-rc
-  
-  rm -rf oci-cli-rc && wget -O oci_cli_rc https://raw.githubusercontent.com/voyku/config/main/oci_cli_rc
- 
-  oci_cli_rc="/root/.oci/oci_cli_rc"
+  echo -e "—————————————— 秘钥已设置 ——————————————""" 
   read -rp "请输入你的userid:" userid
   sed -i "s/uuuu/${userid}/g" ${config}
   echo -e "—————————————— userid已设置 ——————————————"""
@@ -63,7 +52,10 @@ function oci_config() {
                         ;;
                 esac
         done
-  
+		
+  oci setup oci-cli-rc
+  rm -rf oci-cli-rc && wget -O oci_cli_rc https://raw.githubusercontent.com/voyku/config/main/oci_cli_rc
+  oci_cli_rc="/root/.oci/oci_cli_rc"
   sed -i "s/xxx/${tenancyid}/g" ${oci_cli_rc}
   echo -e "—————————————— oci_cli_rc已设置 ——————————————"""
   yum install -y openssl
@@ -453,10 +445,10 @@ menu() {
   install_oci
   ;;
   1)
-  install
+  oci_config
   ;;
   2)
-  oci_config
+  install
   ;;
   esac
 }
