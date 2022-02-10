@@ -15,7 +15,7 @@ function install_oci() {
     pre_pare
     bash -c "$(curl -L https://raw.githubusercontent.com/voyku/config/main/py.sh)"
 	bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)" 
-	oci_config
+	
 }
 
 function oci_config() {
@@ -444,8 +444,9 @@ function security_list() {
 
 menu() {
   echo -e "—————————————— 开机向导 ——————————————"""
-  echo -e "${Green}0.${Font}  安装配置oci"
-  echo -e "${Green}1.${Font}  开鸡挖币"
+  echo -e "${Green}0.${Font}  安装oci"
+  echo -e "${Green}1.${Font}  配置oci"
+  echo -e "${Green}2.${Font}  开鸡挖币"
   read -rp "请输入数字：" menu_num
   case $menu_num in
   0)
@@ -453,6 +454,9 @@ menu() {
   ;;
   1)
   install
+  ;;
+  2)
+  oci_config
   ;;
   esac
 }
