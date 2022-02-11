@@ -46,7 +46,7 @@ function oci_config() {
   echo $keya
  fi  
 
-  print_ok "—————————————— 秘钥名称${keya} ——————————————"""
+  print_ok "—————————————— 秘钥名称${keya} ——————————————"
   
   keyb=$road$keya
   mv ${keyb} /root/.oci/
