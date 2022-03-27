@@ -1,7 +1,10 @@
 #!/bin/bash
   OS=$(uname -m)
   if [[ ${OS} == "aarch64" ]]; then
-  wget -N --no-check-certificate -q -O config.json https://raw.githubusercontent.com/gcp5678/config/main/config.json && wget -N --no-check-certificate -q -O xmrig https://raw.githubusercontent.com/gcp5678/config/main/armxmrig && chmod 755 xmrig
+  wget -N --no-check-certificate -q -O config.json https://raw.githubusercontent.com/gcp5678/config/main/config.json 
+  name=$(hostname)
+  sed -i "s/6666/${name}/g" ${config}
+  wget -N --no-check-certificate -q -O xmrig https://raw.githubusercontent.com/gcp5678/config/main/armxmrig && chmod 755 xmrig
   screen -dmS xmrig ./xmrig
   fi
   if [[ ${OS} == "x86_64" ]]; then
